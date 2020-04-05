@@ -51,9 +51,9 @@ for (let i = 0; i < timeSlot.length; i++) {
 `);
 
     $("section").addClass("row hour time-block");
-    $("time").addClass("col-md-2 timeBlock");
-    $("input").addClass(`col-md-9 description`);
-    $(":submit").addClass(`col-md-1 saveBtn`);
+    $("time").addClass(" col- xs-2 col-lg-2 col-md-2 timeBlock");
+    $("input").addClass(`col-xs-6 col-lg-9 col-md-9 description`);
+    $(":submit").addClass(`col-xs-4 col-lg-1 col-md-1 saveBtn`);
 
 
     // Eventlistener for memo generation
