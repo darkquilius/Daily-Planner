@@ -1,7 +1,11 @@
 // Sets date at top
-const today = moment().format("MMM " + "D " + "YYYY");
 const currentDay = document.getElementById("currentDay");
-currentDay.innerHTML = today
+
+var update = function() {
+    currentDay.innerHTML =
+        moment().format('MMMM Do YYYY, h:mm:ss a');
+}
+setInterval(update, 1000);
 
 // Used for color change based on time of day
 const todayHour = parseInt(moment().format("H"));
@@ -17,16 +21,21 @@ var inputArea;
 
 // Functions for localStorage
 function memoSave(placement, words) {
+    //creating a temp object
     var memoObject = {
         placement: placement,
         words: words
     };
+    //pushing object to array so its not all saved in one object
     memoArray.push(memoObject);
+    //making an array match one key so we can call all objects for that time slot. have to stringify bc otherwise it will show up as object object
     localStorage.setItem("allObjects", JSON.stringify(memoArray));
 }
 
 function memoRender() {
+    // pulling a string from local storage
     memoArray = JSON.parse(localStorage.getItem("allObjects"));
+    //making it so if there are obejcts in local storage, they were just turned to strings so wo we can place them. input area is chosen by array spot, then the value of the input text is the stringified object.
     if (memoArray != null) {
         memoArray.forEach(eachObject => {
             var placement = eachObject.placement;
@@ -37,6 +46,8 @@ function memoRender() {
         memoArray = []
     }
 }
+
+
 
 // dynamically makes the timeblock
 for (let i = 0; i < timeSlot.length; i++) {
