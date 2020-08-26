@@ -1,42 +1,36 @@
-# Daily-Planner
+![user picture](https://avatars1.githubusercontent.com/u/57682169?v=4)
 
-Deployed Project: https://darkquilius.github.io/Daily-Planner/
+#### User Email: 
+    andrew.c.reeves27@gmail.com
+    
+#### Title: 
+    Weather Dashboard
+    
+#### Deployment:
+    https://darkquilius.github.io/Daily-Planner/
+    
+#### Description:
+    Complete with color coordination and up to the minute updates using the Moment CDN, this app helps time management.
+    
+#### Table of Contents:
+        -Installation
+        -Usage
+        -License
+        -Contributors
+        -Tests
+        -Questions
 
-----------------
-
-AS AN employee with a busy schedule
-
-I WANT to add important events to a daily planner
-
-SO THAT I can manage my time effectively
-
------------------
-
-GIVEN I am using a daily planner to create a schedule
-
-WHEN I open the planner
-
-THEN the current day is displayed at the top of the calendar
-
-WHEN I scroll down
-
-THEN I am presented with timeblocks for standard business hours
-
-WHEN I view the timeblocks for that day
-
-THEN each timeblock is color coded to indicate whether it is in the past, present, or future
-
-WHEN I click into a timeblock
-
-THEN I can enter an event
-
-WHEN I click the save button for that timeblock
-
-THEN the text for that event is saved in local storage
-
-WHEN I refresh the page
-
-THEN the saved events persist
+#### Usage:
+    Auto-generation of weather based on area
+    
+#### License:
+    Apache-2.0
+    
+#### Contributors:
+    Andrew Reeves: @darkquilius
+    
+#### Questions:
+    If any questions persist, please direct them to my email: andrew.c.reeves27@gmail.com
 
 ----------------
 
@@ -45,4 +39,4 @@ Take charge of your hours with this hourly calendar!
 Plans for the Future:
 - add a function to erase completed tasks -
 - add font awesome images to buttons -
-- attache different colored labels to each event -
+- attach different colored labels to each event -
