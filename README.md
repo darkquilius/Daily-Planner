@@ -21,7 +21,7 @@
         -Questions
 
 #### Usage:
-    Auto-generation of weather based on area
+    Time Management during business hours
     
 #### License:
     Apache-2.0
