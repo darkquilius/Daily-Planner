@@ -18,10 +18,14 @@ const timeSlot = ["9 A.M.", "10 A.M", "11 A.M.", "12 P.M.", "1 P.M.", "2 P.M.", 
 var memoArray = [];
 var saveBtn;
 var inputArea;
+var memoArea;
 
 // Functions for localStorage
 function memoSave(placement, words) {
     //creating a temp object
+    if (words === ""){
+        return
+    }
     var memoObject = {
         placement: placement,
         words: words
@@ -40,7 +44,7 @@ function memoRender() {
         memoArray.forEach(eachObject => {
             var placement = eachObject.placement;
             var words = eachObject.words;
-            $(inputArea[placement]).val(words);
+            $(memoArea[placement]).append(`<br>` + words);
         });
     } else {
         memoArray = []
@@ -52,46 +56,49 @@ function memoRender() {
 // dynamically makes the timeblock
 for (let i = 0; i < timeSlot.length; i++) {
     const container = $(".container");
-
+    
     container.append(`
-<section hour=${i}>
-    <time>${timeSlot[i]}</time>
-    <input type=text  id=input-${i}>
-    <button index=${i} class=saveBtn${i}></button>
+<section class="row hour time-block" hour=${i}>
+    <time class=" col- xs-2 col-lg-2 col-md-2 timeBlock">${timeSlot[i]}</time>
+    <div class="memoArea col-xs-4 col-lg-6 col-md-6"></div>
+    <input type=text class="col-xs-2 col-lg-3 col-md-3 description" id=input${i}></input>
+    <button class="col-xs-4 col-lg-1 col-md-1 saveBtn" id=saveBtn${i}></button>
 </section>
 `);
 
-    $("section").addClass("row hour time-block");
-    $("time").addClass(" col- xs-2 col-lg-2 col-md-2 timeBlock");
-    $("input").addClass(`col-xs-6 col-lg-9 col-md-9 description`);
-    $(":submit").addClass(`col-xs-4 col-lg-1 col-md-1 saveBtn`);
-
-
     // Eventlistener for memo generation
-    $(".saveBtn" + i).click(function() {
-        var placement = parseInt($(this).attr("index"));
-        var words = $(inputArea[placement]).val();
-
+    $(`#saveBtn${i}`).click(function() {
+        var placement = i;
+        var words = $(`#input${i}`).val();
         memoSave(placement, words);
+        $(`#input${i}`).val("");
+        arrayMemo.each(function(){$(this).text("")})
+        memoRender()
     })
     saveBtn = $(".saveBtn");
     inputArea = $(".description");
+    memoArea = $(".memoArea")
 
     // Color change functions based on time of day
     var arrayTime = $(".timeBlock");
     var arrayInput = $(".description");
+    var arrayMemo = $(".memoArea");
     var time = $(arrayTime[i]).text();
     var militaryTime = parseInt(moment(time, "LT").format("H"));
     var text = $(arrayInput[i]);
+    var memo = $(arrayMemo[i])
 
     if (militaryTime === todayHour) {
-        text.addClass("present")
+        text.addClass("present");
+        memo.addClass("present");
     };
     if (militaryTime < todayHour) {
-        text.addClass("past")
+        text.addClass("past");
+        memo.addClass("past");
     };
     if (militaryTime > todayHour) {
-        text.addClass("future")
+        text.addClass("future");
+        memo.addClass("future");
     }
 };
 
